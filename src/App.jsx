@@ -1,16 +1,21 @@
-import { useState } from 'react'
-import RHF from './components/RHF'
-
-import './App.css'
+import RHF from './components/RHF';
+import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Loginform from './components/Loginform';
 
 function App() {
 
 
   return (
-    <>
-    <RHF />
-    </>
-  )
+    <Router>
+
+      <Routes>
+        {/* <Route path="/" element={<Home />} /> */}
+        <Route path="/login" element={<Loginform />} />
+        <Route path="/signup" element={<RHF />} />
+      </Routes>
+    </Router>
+      )
 }
 
 export default App
