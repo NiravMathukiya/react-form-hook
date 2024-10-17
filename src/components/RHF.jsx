@@ -14,13 +14,13 @@ export default function RHF() {
     const password = watch("Password");
     // const confirm_password = watch("confirm_password")
 
-    const navgatefun =async () =>{
+    const navgatefun = async () => {
         await setInterval(() => {
-            
+
             navgate("/login")
         }, 2000);
     }
-    const onSubmit =  (data) => {
+    const onSubmit = (data) => {
         const fullName = `${data["First name"]} ${data["Last name"]}`;
         const postData = {
             email: data.Email,
@@ -31,16 +31,17 @@ export default function RHF() {
         console.log(postData);
 
         axios.post('http://192.168.1.7:8080/v1/user/register', postData)
-          .then((res) => {
-            console.log('Data submitted successfully', res.data);
-            toast.success("User succesfully Register");
-            navgatefun();
-            
-            
-          })
-          .catch((error) => {
-            console.error('There was an error:', error);
-          });
+            .then((res) => {
+                console.log('Data submitted successfully', res.data);
+                toast.success("User succesfully Register");
+                navgatefun();
+
+
+            })
+            .catch((error) => {
+                toast.error("User Not Register succesfully");
+                console.error('There was an error:', error);
+            });
     };
 
     return (
@@ -57,7 +58,7 @@ export default function RHF() {
                     {...register("First name", { required: true, maxLength: 80 })}
                     className={`w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors["First name"] ? "border-red-500" : "border-gray-300"
                         }`}
-        
+
                 />
                 {errors["First name"] && <p className="text-red-500">First name is required</p>}
 
@@ -91,7 +92,7 @@ export default function RHF() {
                 <input
                     type="text"
                     placeholder="Password"
-                    {...register("Password", { required: false, maxLength: 30})}
+                    {...register("Password", { required: false, maxLength: 30 })}
                     className={`w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 ${errors.Password ? "border-red-500" : "border-gray-300"
                         }`}
                 />
@@ -125,8 +126,8 @@ export default function RHF() {
                 </button>
 
                 <p className="text-center text-gray-600 mt-4">
-                        Already Have An Account? <Link to="/login" className="text-purple-700 hover:underline">Register</Link>
-                    </p>
+                    Already Have An Account? <Link to="/login" className="text-purple-700 hover:underline">Register</Link>
+                </p>
             </form>
             <Toaster />
         </div>

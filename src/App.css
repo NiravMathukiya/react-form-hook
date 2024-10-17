@@ -1,0 +1,20 @@
+/* .animatediv {
+  position: relative;
+  animation-name: moveDown;
+  animation-iteration-count: infinite;
+  animation-duration: 1000ms;
+} */
+/* 
+@keyframes moveDown {
+ 10%{
+    padding: 20px;
+    background: #000;
+ }
+ 50%{
+    background-color: green;
+ }
+ 100%{
+    background-color: orange;
+    padding: 20px;
+ }
+} */
